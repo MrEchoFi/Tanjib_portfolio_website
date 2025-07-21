@@ -13,9 +13,9 @@
      <style>
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0; /* Reset default body margin */
+            margin: 0; 
         }
-        /* Custom styles for the animated glitch effect */
+        
         .glitch {
             position: relative;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -71,7 +71,7 @@
             }
         }
 
-        /* Additional animations */
+       
         .fade-in {
             animation: fadeIn 1s ease-in-out;
         }
@@ -124,56 +124,56 @@
             }
         }
 
-        /* Custom styles based on Solo Leveling: Arise website */
+        
         .bg-gradient-sl {
-            background: linear-gradient(to bottom, #0c1e35, #080c13); /* Darker background gradient */
+            background: linear-gradient(to bottom, #0c1e35, #080c13); 
         }
         .text-shadow-sl {
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Stronger text shadow */
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); 
         }
         .card-sl {
-            background-color: rgba(255, 255, 255, 0.06); /* Glassmorphism effect - more transparent*/
-            border: 1px solid rgba(255, 255, 255, 0.1); /* More subtle border */
-            border-radius: 0.75rem; /* Rounded corners */
+            background-color: rgba(255, 255, 255, 0.06); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 0.75rem; 
             padding: 2rem;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
         .card-sl:hover {
-            transform: translateY(-8px) scale(1.02); /* Slight lift and scale on hover */
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+            transform: translateY(-8px) scale(1.02); 
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
         }
         .btn-primary-sl {
-            background-color: #ffc85e; /* Vibrant yellow */
-            color: #0c0c0c; /* Very dark text for contrast */
+            background-color: #ffc85e; 
+            color: #0c0c0c; 
             padding: 0.8rem 2rem;
             border-radius: 0.5rem;
-            font-weight: 600; /* Semi-bold font */
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Add shadow */
-            display: inline-flex; /* Use inline-flex for better alignment */
-            align-items: center; /* Vertically center icon and text */
-            gap: 0.5rem; /* Add some gap between icon and text */
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
         }
         .btn-primary-sl:hover {
-            background-color: #ffe58f; /* Slightly lighter yellow on hover */
-            color: #000000; /* Keep text dark on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover*/
-            transform: translateY(-2px); /* Slight lift on hover */
+            background-color: #ffe58f; 
+            color: #000000; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            transform: translateY(-2px); 
         }
         .section-title-sl {
-            color: #ffffff; /* White title */
-            font-size: 2.5rem; /* Larger font size */
-            font-weight: 700; /* Bold font weight */
-            margin-bottom: 3rem; /* Increased margin */
-            text-align: center; /* Center align */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+            color: #ffffff; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 3rem; 
+            text-align: center; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
         }
         .service-icon-sl {
-            width: 4rem; /* Larger icon size */
+            width: 4rem; 
             height: 4rem;
-            margin-bottom: 1.5rem; /* Increased margin */
-            display: flex; /* Use flexbox for centering */
+            margin-bottom: 1.5rem; 
+            display: flex; 
             align-items: center;
             justify-content: center;
             border-radius: 50%; /* Make it a circle */
@@ -220,7 +220,7 @@
     </style>
 </head>
 <body class="bg-gradient-sl text-white">
-     <!-- Particles Background -->
+    
     <div id="particles-js"></div>
     <header class="bg-gray-800 bg-opacity-50 backdrop-blur-md py-4 sticky top-0 z-10 rounded-b-lg shadow-md fade-in">
         <div class="container mx-auto px-4">
@@ -663,10 +663,10 @@
             },
             retina_detect: true
         }); */
-      // 1) Grab the container
+      // Grab the container
       const projectList = document.getElementById('projectList'); // This is for the GitHub projects section
 
-      // 2) Define your desired repo order here:
+      
       //    Put each repo.name exactly as it appears on GitHub,
       //    from first (index 0) to last.
       const customOrder = [
@@ -677,33 +677,39 @@
         'EchoFi_Pocket_Server.',
         'EchoFi_Keylogger_Primo',
         'EchoFi_USB_rubber_ducky',
+        'EchoFi_SpiderBot',
         'EchoFi_Droid',
+        'EchoFi_USB_rubber_ducky',
         'GreeDoS_V1',
         'BannerGrapV1',
         'EchoFi_8266Deauther',
         'GRABBER',
         'NetWraith',
+       
         'Trios_terminal-',
         'EchoFi_Kilog',
         'EchoFi_BLE_Joystick',
         'Echo_Snipe',
+        'EchoFi_ObstacleAvoiding_Bot',
         'Book-Of-Operational_Scapy-BY-Tanjib-Isham',
         'Deauth_All',
         'Fidelity_Xploit',
         'Lesson-of-keylogger-BY-tanjib_isham',
         'E-commerce_site.',
         'Concept-of-RubberDucky-using-M5-Stamp-S3',
-        // ...and so on
+       
       ];
 
      
       const repoImages = {
         'BannerGrapV2': 'https://github.com/MrEchoFi/BannerGrapV2/blob/master/BannerGrapV2_Security_Scanner_Tool_1d0e04fd-c100-4173-88b9-52a99f69fc2b.jpeg?raw=true',
         'GreeDoS_V2': 'https://github.com/MrEchoFi/GreeDoS_V2/blob/master/thumbnail-b9f492e1-4655-4c87-8035-e8d9a0efea7a.jpeg?raw=true',
-        'EchoFi_BoX_V1-': 'https://github.com/MrEchoFi/EchoFi_BoX_V1-/blob/main/EchoFi_BoX_V1_Hacking_616fe89b-789a-4dc2-937e-a739a1a39849.png?raw=true',
+        'EchoFi_BoX_V1-': 'https://github.com/MrEchoFi/EchoFi_BoX_V1-/blob/main/photo_2025-07-21_15-13-02.jpg?raw=true',
         'DentoGuard': 'https://camo.githubusercontent.com/9b0f8f651a7cbcc9fd7cf3b30b6c6cae25044be70b52be4bbae67c9393d5ac98/68747470733a2f2f7374617469632e7665637465657a792e636f6d2f73797374656d2f7265736f75726365732f7468756d626e61696c732f3032372f3830392f3534392f736d616c6c5f32782f746f6f74682d776974682d626c75652d6261636b67726f756e642d33642d72656e646572696e672d70686f746f2e6a7067',
         'EchoFi_Pocket_Server.': 'https://private-user-images.githubusercontent.com/188663611/468411335-a0d80d46-84fe-4937-9a7a-856df68f85c3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDA5NTMsIm5iZiI6MTc1MzA0MDY1MywicGF0aCI6Ii8xODg2NjM2MTEvNDY4NDExMzM1LWEwZDgwZDQ2LTg0ZmUtNDkzNy05YTdhLTg1NmRmNjhmODVjMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQxOTQ0MTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lMjY4NTE5NjgxOTVjODA5YTA1YWQ3NzZhNTZiMWQ3N2E1OTM5OWQ3M2FhMjA4NGQ1NjQ0ZjFiNDQ4NzE3MmEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hdfjQnBjVK0aoQJpbtIhZph4BF3jKElEacR6Q08kzTU',
+        
         'EchoFi_Keylogger_Primo': 'https://github.com/MrEchoFi/EchoFi_Keylogger_Primo/blob/master/EchoFi_Keylogger_Project_Primo_058644ac-c31f-44d9-918b-99c439709c93.jpeg?raw=true',
+        'EchoFi_SpiderBot' : 'https://github.com/MrEchoFi/EchoFi_SpiderBot/blob/main/1753085157692.jpg?raw=true',
         'EchoFi_USB_rubber_ducky': 'https://private-user-images.githubusercontent.com/188663611/447918535-3f260481-e638-4f2d-a8b8-1eeeb88fa713.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDMyNjQsIm5iZiI6MTc1MzA0Mjk2NCwicGF0aCI6Ii8xODg2NjM2MTEvNDQ3OTE4NTM1LTNmMjYwNDgxLWU2MzgtNGYyZC1hOGI4LTFlZWViODhmYTcxMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDIyNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ODY5ZDEwYWE0ZmFhOWE2NTM4YzUyN2RiZTdkNmVlNjdiNWZlNDcxMDdiZjIyNmRmYzc0OWUzMjM5MjRkNTU2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.74IALhC9kfGRTHteP4fWR7-spDXJcFIQIXOqDQVvgnA',
         'EchoFi_Droid': 'https://private-user-images.githubusercontent.com/188663611/460587022-5b18ab78-89d6-4777-a97a-355679f470d3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDM1NzgsIm5iZiI6MTc1MzA0MzI3OCwicGF0aCI6Ii8xODg2NjM2MTEvNDYwNTg3MDIyLTViMThhYjc4LTg5ZDYtNDc3Ny1hOTdhLTM1NTY3OWY0NzBkMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDI3NThaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ZGUyNGFkOTk0NjY4MzU5MTgxZDgyZWYwZmE4YWRmYTcwN2M0NmJmMmI2NTUxNGJkNDhkYzdmOWFhODQyM2ExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.07aVsh35iCJPpCCDJzUObzs4nm6LPtP5QcsWt0DU3hU',
         'GreeDoS_V1': 'https://github.com/MrEchoFi/GreeDoS_V2/blob/master/thumbnail-6b5b0b58-293b-435f-9460-12621e837d65.jpeg?raw=true',
@@ -715,6 +721,7 @@
         'EchoFi_Kilog': 'https://github.com/user-attachments/assets/0324516c-049f-4a96-a40c-bd6681a47923',
         'EchoFi_BLE_Joystick': 'https://private-user-images.githubusercontent.com/188663611/440048756-f3604810-efd3-488c-8952-867db6db4ae4.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDQwOTIsIm5iZiI6MTc1MzA0Mzc5MiwicGF0aCI6Ii8xODg2NjM2MTEvNDQwMDQ4NzU2LWYzNjA0ODEwLWVmZDMtNDg4Yy04OTUyLTg2N2RiNmRiNGFlNC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDM2MzJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zYWY3YWI3ZjFkZDlmZjBlNzUwZWU0ZWExMGQ5YzQwNDlhODdkZmQ4OTc3ZjFjZTMxOTQ1ZmYxNzNjODRmOTg1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.yJRUXSSHqAzNfZCQwmc5qdRkj5FSJPJvG_hsIouOm7Q',
         'Echo_Snipe': 'https://private-user-images.githubusercontent.com/188663611/440548756-d8106607-5f2e-4373-80bb-15165e7e09c9.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDQxNjAsIm5iZiI6MTc1MzA0Mzg2MCwicGF0aCI6Ii8xODg2NjM2MTEvNDQwNTQ4NzU2LWQ4MTA2NjA3LTVmMmUtNDM3My04MGJiLTE1MTY1ZTdlMDljOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDM3NDBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jZmIzZjY0MmM1MTFkZDU4YmZkNjkxZDRiOWIzZjM1NDZjYTAyMDg3MTgyOGM5MTZhOTI2N2VhM2ExMmJkYTIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.-RH1qEtYdNBD92xctDNB1Zd_5rAB0u-Ng3FlYgtKjak',
+        'EchoFi_ObstacleAvoiding_Bot' : 'https://github.com/MrEchoFi/EchoFi_ObstacleAvoiding_Bot/blob/main/photo_2025-07-21_13-29-34.jpg?raw=true',
         'Book-Of-Operational_Scapy-BY-Tanjib-Isham': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
         'Deauth_All': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
         'Fidelity_Xploit': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
