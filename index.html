@@ -8,7 +8,80 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        /* Blurred placeholder for images */
+        .img-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #23272f 40%, #2d3748 60%, #23272f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-spinner {
+            border: 4px solid #eee;
+            border-top: 4px solid #ffc85e;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+      .dark-mode {
+        background: linear-gradient(to bottom, #181818, #23272f) !important;
+        color: #e0e0e0 !important;
+      }
+      .dark-mode .bg-gray-800,
+      .dark-mode .bg-gradient-sl {
+        background: linear-gradient(to bottom, #23272f, #181818) !important;
+      }
+      .dark-mode .text-white {
+        color: #e0e0e0 !important;
+      }
+      .dark-mode .card-sl,
+      .dark-mode .project-card-sl {
+        background-color: rgba(30, 41, 59, 0.7) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+      }
+      .dark-mode .btn-primary-sl {
+        background-color: #22223b !important;
+        color: #ffc85e !important;
+      }
+      .dark-mode .btn-primary-sl:hover {
+        background-color: #39396a !important;
+        color: #ffe58f !important;
+      }
+      .dark-mode .section-title-sl {
+        color: #ffc85e !important;
+      }
+      .dark-mode .service-icon-sl {
+        background-color: rgba(255,255,255,0.08) !important;
+        color: #ffe58f !important;
+      }
+      .dark-mode .text-blue-400 {
+        color: #7dd3fc !important;
+      }
+      .dark-mode .text-gray-300 {
+        color: #b0b0b0 !important;
+      }
+      .dark-mode .text-gray-400 {
+        color: #b0b0b0 !important;
+      }
+      .dark-mode .bg-gray-800 {
+        background-color: #23272f !important;
+      }
+      .dark-mode .mobile-menu-sl, .dark-mode .mobile-menu-content-sl {
+        background-color: rgba(30, 41, 59, 0.95) !important;
+      }
+    </style>
     
      <style>
         body {
@@ -232,14 +305,21 @@
                         <li><a href="#services" class="hover:text-gray-300 transition duration-300 text-gray-200">Services</a></li>
                         <li><a href="#projects" class="hover:text-gray-300 transition duration-300 text-gray-200">Projects</a></li>
                         <li><a href="#contact" class="hover:text-gray-300 transition duration-300 text-gray-200">Contact</a></li>
-                         <li><a href="#Reach Me" class="hover:text-gray-300 transition duration-300 text-gray-200">Reach Me</a></li>
+                        <li><a href="#Reach Me" class="hover:text-gray-300 transition duration-300 text-gray-200">Reach Me</a></li>
                     </ul>
                 </nav>
-                <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#00b7ff" viewBox="0 0 24 24">
-                    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
-                </svg>
-                </button>
+                <div class="flex items-center gap-2">
+                  <button id="dark-mode-toggle" class="text-gray-300 focus:outline-none px-2 py-1 rounded hover:bg-gray-700 transition" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+                    <svg id="dark-mode-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffc85e" viewBox="0 0 24 24">
+                      <path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
+                    </svg>
+                  </button>
+                  <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#00b7ff" viewBox="0 0 24 24">
+                      <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+                    </svg>
+                  </button>
+                </div>
             </div>
         </div>
     </header>
@@ -530,6 +610,29 @@
      <script src="https://smtpjs.com/v3/smtp.js"></script>
       <script>
 
+      // Dark mode toggle logic
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const darkModeIcon = document.getElementById('dark-mode-icon');
+      function setDarkMode(enabled) {
+        if (enabled) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('darkMode', 'true');
+          if (darkModeIcon) darkModeIcon.innerHTML = '<path d="M21.64 13.64A9 9 0 1110.36 2.36a7 7 0 1011.28 11.28z"/>';
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('darkMode', 'false');
+          if (darkModeIcon) darkModeIcon.innerHTML = '<path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>';
+        }
+      }
+      // On load, set dark mode from localStorage
+      setDarkMode(localStorage.getItem('darkMode') === 'true');
+      if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+          const isDark = document.body.classList.contains('dark-mode');
+          setDarkMode(!isDark);
+        });
+      }
+
       
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -702,32 +805,32 @@
 
      
       const repoImages = {
-        'BannerGrapV2': 'https://github.com/MrEchoFi/BannerGrapV2/blob/master/BannerGrapV2_Security_Scanner_Tool_1d0e04fd-c100-4173-88b9-52a99f69fc2b.jpeg?raw=true',
-        'GreeDoS_V2': 'https://github.com/MrEchoFi/GreeDoS_V2/blob/master/thumbnail-b9f492e1-4655-4c87-8035-e8d9a0efea7a.jpeg?raw=true',
-        'EchoFi_BoX_V1-': 'https://github.com/MrEchoFi/EchoFi_BoX_V1-/blob/main/photo_2025-07-21_15-13-02.jpg?raw=true',
+        'BannerGrapV2': 'https://raw.githubusercontent.com/MrEchoFi/BannerGrapV2/master/BannerGrapV2_Security_Scanner_Tool_1d0e04fd-c100-4173-88b9-52a99f69fc2b.jpeg',
+        'GreeDoS_V2': 'https://raw.githubusercontent.com/MrEchoFi/GreeDoS_V2/master/thumbnail-b9f492e1-4655-4c87-8035-e8d9a0efea7a.jpeg',
+        'EchoFi_BoX_V1-': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_BoX_V1-/master/photo_2025-07-21_15-13-02.jpg',
         'DentoGuard': 'https://camo.githubusercontent.com/9b0f8f651a7cbcc9fd7cf3b30b6c6cae25044be70b52be4bbae67c9393d5ac98/68747470733a2f2f7374617469632e7665637465657a792e636f6d2f73797374656d2f7265736f75726365732f7468756d626e61696c732f3032372f3830392f3534392f736d616c6c5f32782f746f6f74682d776974682d626c75652d6261636b67726f756e642d33642d72656e646572696e672d70686f746f2e6a7067',
-        'EchoFi_Pocket_Server.': 'https://private-user-images.githubusercontent.com/188663611/468411335-a0d80d46-84fe-4937-9a7a-856df68f85c3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDA5NTMsIm5iZiI6MTc1MzA0MDY1MywicGF0aCI6Ii8xODg2NjM2MTEvNDY4NDExMzM1LWEwZDgwZDQ2LTg0ZmUtNDkzNy05YTdhLTg1NmRmNjhmODVjMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQxOTQ0MTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lMjY4NTE5NjgxOTVjODA5YTA1YWQ3NzZhNTZiMWQ3N2E1OTM5OWQ3M2FhMjA4NGQ1NjQ0ZjFiNDQ4NzE3MmEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hdfjQnBjVK0aoQJpbtIhZph4BF3jKElEacR6Q08kzTU',
+        'EchoFi_Pocket_Server.': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_Pocket_Server./master/468411335-a0d80d46-84fe-4937-9a7a-856df68f85c3.jpg',
         
-        'EchoFi_Keylogger_Primo': 'https://github.com/MrEchoFi/EchoFi_Keylogger_Primo/blob/master/EchoFi_Keylogger_Project_Primo_058644ac-c31f-44d9-918b-99c439709c93.jpeg?raw=true',
-        'EchoFi_SpiderBot' : 'https://github.com/MrEchoFi/EchoFi_SpiderBot/blob/main/1753085157692.jpg?raw=true',
-        'EchoFi_USB_rubber_ducky': 'https://private-user-images.githubusercontent.com/188663611/447918535-3f260481-e638-4f2d-a8b8-1eeeb88fa713.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDMyNjQsIm5iZiI6MTc1MzA0Mjk2NCwicGF0aCI6Ii8xODg2NjM2MTEvNDQ3OTE4NTM1LTNmMjYwNDgxLWU2MzgtNGYyZC1hOGI4LTFlZWViODhmYTcxMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDIyNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ODY5ZDEwYWE0ZmFhOWE2NTM4YzUyN2RiZTdkNmVlNjdiNWZlNDcxMDdiZjIyNmRmYzc0OWUzMjM5MjRkNTU2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.74IALhC9kfGRTHteP4fWR7-spDXJcFIQIXOqDQVvgnA',
-        'EchoFi_Droid': 'https://private-user-images.githubusercontent.com/188663611/460587022-5b18ab78-89d6-4777-a97a-355679f470d3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDM1NzgsIm5iZiI6MTc1MzA0MzI3OCwicGF0aCI6Ii8xODg2NjM2MTEvNDYwNTg3MDIyLTViMThhYjc4LTg5ZDYtNDc3Ny1hOTdhLTM1NTY3OWY0NzBkMy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDI3NThaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ZGUyNGFkOTk0NjY4MzU5MTgxZDgyZWYwZmE4YWRmYTcwN2M0NmJmMmI2NTUxNGJkNDhkYzdmOWFhODQyM2ExJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.07aVsh35iCJPpCCDJzUObzs4nm6LPtP5QcsWt0DU3hU',
-        'GreeDoS_V1': 'https://github.com/MrEchoFi/GreeDoS_V2/blob/master/thumbnail-6b5b0b58-293b-435f-9460-12621e837d65.jpeg?raw=true',
-        'BannerGrapV1': 'https://github.com/MrEchoFi/BannerGrapV1/blob/master/thumbnail-74e9f4aa-ab1f-462e-bb42-30eb525830b3.jpeg',
-        'EchoFi_8266Deauther': 'https://private-user-images.githubusercontent.com/188663611/460592911-e267ef2d-0037-4113-b589-121dbf56fe36.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDM4NjgsIm5iZiI6MTc1MzA0MzU2OCwicGF0aCI6Ii8xODg2NjM2MTEvNDYwNTkyOTExLWUyNjdlZjJkLTAwMzctNDExMy1iNTg5LTEyMWRiZjU2ZmUzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDMyNDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yY2Q4ZTRmMDA3MjU4ZTQ5MDg0NDE1Njk5NzY2NmJjN2EwNmY0YTFhMzE2NTYxMGY3M2M5MmI0NWZkMDJjMWY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.uhbqHSZkr9wDYwMNIwcTt-O6sKvk5texj4MsVmc6zi8',
-        'GRABBER': 'https://github.com/MrEchoFi/GRABBER/blob/master/Grabber_Tool_Functionality_Showcase_b687aca3-91c6-4d76-adc0-d9a503c42a21.jpg?raw=true',
-        'NetWraith': 'https://private-user-images.githubusercontent.com/188663611/447363378-90913ca9-41df-40f2-b93c-3bf99ef0ee22.jpeg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDM5NTEsIm5iZiI6MTc1MzA0MzY1MSwicGF0aCI6Ii8xODg2NjM2MTEvNDQ3MzYzMzc4LTkwOTEzY2E5LTQxZGYtNDBmMi1iOTNjLTNiZjk5ZWYwZWUyMi5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MjBUMjAzNDExWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODljYTYzNjExNzBkMTY3YmRhMTg3YzUwN2U2NTNiZjdlNDU0MzlmN2RhMjU1YTFmOGY4MzA2ODZiOTJkZGE1NSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.3Hy3nDnvYZcgT8hebJ0M_oPNeLRr8gQ_nyrYVYcfoYg',
-        'Trios_terminal-': 'https://github.com/MrEchoFi/Trios_terminal-/blob/main/Trios_Terminal_Cyber_Security_Tool_a1d758a9-6b6a-4636-a105-60e99bfbf425.jpg?raw=true',
-        'EchoFi_Kilog': 'https://github.com/user-attachments/assets/0324516c-049f-4a96-a40c-bd6681a47923',
-        'EchoFi_BLE_Joystick': 'https://private-user-images.githubusercontent.com/188663611/440048756-f3604810-efd3-488c-8952-867db6db4ae4.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDQwOTIsIm5iZiI6MTc1MzA0Mzc5MiwicGF0aCI6Ii8xODg2NjM2MTEvNDQwMDQ4NzU2LWYzNjA0ODEwLWVmZDMtNDg4Yy04OTUyLTg2N2RiNmRiNGFlNC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDM2MzJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zYWY3YWI3ZjFkZDlmZjBlNzUwZWU0ZWExMGQ5YzQwNDlhODdkZmQ4OTc3ZjFjZTMxOTQ1ZmYxNzNjODRmOTg1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.yJRUXSSHqAzNfZCQwmc5qdRkj5FSJPJvG_hsIouOm7Q',
-        'Echo_Snipe': 'https://private-user-images.githubusercontent.com/188663611/440548756-d8106607-5f2e-4373-80bb-15165e7e09c9.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTMwNDQxNjAsIm5iZiI6MTc1MzA0Mzg2MCwicGF0aCI6Ii8xODg2NjM2MTEvNDQwNTQ4NzU2LWQ4MTA2NjA3LTVmMmUtNDM3My04MGJiLTE1MTY1ZTdlMDljOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcyMFQyMDM3NDBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jZmIzZjY0MmM1MTFkZDU4YmZkNjkxZDRiOWIzZjM1NDZjYTAyMDg3MTgyOGM5MTZhOTI2N2VhM2ExMmJkYTIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.-RH1qEtYdNBD92xctDNB1Zd_5rAB0u-Ng3FlYgtKjak',
-        'EchoFi_ObstacleAvoiding_Bot' : 'https://github.com/MrEchoFi/EchoFi_ObstacleAvoiding_Bot/blob/main/photo_2025-07-21_13-29-34.jpg?raw=true',
+        'EchoFi_Keylogger_Primo': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_Keylogger_Primo/master/EchoFi_Keylogger_Project_Primo_058644ac-c31f-44d9-918b-99c439709c93.jpeg',
+        'EchoFi_SpiderBot' : 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_SpiderBot/master/1753085157675.jpg',
+        'EchoFi_USB_rubber_ducky': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_USB_rubber_ducky/master/447918535-3f260481-e638-4f2d-a8b8-1eeeb88fa713.jpg',
+        'EchoFi_Droid': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_Droid/master/460587022-5b18ab78-89d6-4777-a97a-355679f470d3.jpg',
+        'GreeDoS_V1': 'https://raw.githubusercontent.com/MrEchoFi/GreeDoS_V2/refs/heads/master/thumbnail-6b5b0b58-293b-435f-9460-12621e837d65.jpeg',
+        'BannerGrapV1': 'https://raw.githubusercontent.com/MrEchoFi/BannerGrapV1/master/thumbnail-74e9f4aa-ab1f-462e-bb42-30eb525830b3.jpeg',
+        'EchoFi_8266Deauther': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_8266Deauther/master/460592911-e267ef2d-0037-4113-b589-121dbf56fe36.jpg',
+        'GRABBER': 'https://raw.githubusercontent.com/MrEchoFi/GRABBER/master/Grabber_Tool_Functionality_Showcase_b687aca3-91c6-4d76-adc0-d9a503c42a21.jpg?raw=true',
+        'NetWraith': 'https://raw.githubusercontent.com/MrEchoFi/NetWraith/master/447363378-90913ca9-41df-40f2-b93c-3bf99ef0ee22.jpeg',
+        'Trios_terminal-': 'https://raw.githubusercontent.com/MrEchoFi/Trios_terminal-/main/Trios_Terminal_Cyber_Security_Tool_a1d758a9-6b6a-4636-a105-60e99bfbf425.jpg?raw=true',
+        'EchoFi_Kilog': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_Kilog/master/446780637-0324516c-049f-4a96-a40c-bd6681a47923.gif',
+        'EchoFi_BLE_Joystick': 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_BLE_Joystick/master/440048756-f3604810-efd3-488c-8952-867db6db4ae4.jpg',
+        'Echo_Snipe': 'https://raw.githubusercontent.com/MrEchoFi/Echo_Snipe/master/440548756-d8106607-5f2e-4373-80bb-15165e7e09c9.jpg',
+        'EchoFi_ObstacleAvoiding_Bot' : 'https://raw.githubusercontent.com/MrEchoFi/EchoFi_ObstacleAvoiding_Bot/main/photo_2025-07-21_13-29-34.jpg?raw=true',
         'Book-Of-Operational_Scapy-BY-Tanjib-Isham': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
         'Deauth_All': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
         'Fidelity_Xploit': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
         'Lesson-of-keylogger-BY-tanjib_isham': 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg',
-        'E-commerce_site.': 'https://www.google.com/imgres?q=E%20commerce%20site%20thumbnail&imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fshowing-cart-trolley-shopping-online-sign-graphic_53876-133967.jpg%3Fsemt%3Dais_hybrid%26w%3D740&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fecommerce-website&docid=IQui4uKtWNY4kM&tbnid=GUry7MUzyjjlrM&vet=12ahUKEwivhpbMpsyOAxVpjokEHToaA0UQM3oECCgQAA..i&w=740&h=494&hcb=2&ved=2ahUKEwivhpbMpsyOAxVpjokEHToaA0UQM3oECCgQAA',
-        'Concept-of-RubberDucky-using-M5-Stamp-S3': 'https://www.google.com/imgres?q=M5%20stamp%20s3&imgurl=https%3A%2F%2Fstatic-cdn.m5stack.com%2Fresource%2Fdocs%2Fproducts%2Fcore%2FStampS3%2Fimg-4aaf7195-c36f-4576-aba4-e30405195f3b.webp&imgrefurl=https%3A%2F%2Fdocs.m5stack.com%2Fen%2Fcore%2FStampS3&docid=qefJBuwtSlDHnM&tbnid=L3yMZ4NJxmLnMM&vet=12ahUKEwiXndPAp8yOAxWihIkEHW2MAooQM3oECAoQAA..i&w=800&h=800&hcb=2&ved=2ahUKEwiXndPAp8yOAxWihIkEHW2MAooQM3oECAoQAA',
+        'E-commerce_site.': 'https://raw.githubusercontent.com/MrEchoFi/E-commerce_site./master/download.jpg',
+        'Concept-of-RubberDucky-using-M5-Stamp-S3': 'https://raw.githubusercontent.com/MrEchoFi/Concept-of-RubberDucky-using-M5-Stamp-S3/main/download%20(1).jpg',
       
       };
       const defaultImage = 'https://github.com/MrEchoFi/MrEchoFi/raw/4274f537dec313ac7dde4403fe0fae24259beade/Mr.EchoFi-New-Logo-with-ASCII.jpg';
@@ -760,29 +863,84 @@
             
             const imgSrc = repoImages[repo.name] || defaultImage;
             
+            // Create placeholder wrapper
+            const placeholder = document.createElement('div');
+            placeholder.className = 'img-placeholder';
+            // Add spinner
+            const spinner = document.createElement('div');
+            spinner.className = 'img-spinner';
+            placeholder.appendChild(spinner);
+            // Create image element
             const imgEl = document.createElement('img');
-            imgEl.src = imgSrc;
             imgEl.alt = `${repo.name} thumbnail`;
             imgEl.className = 'project-image-sl mb-4';
+            imgEl.style.display = 'none';
             imgEl.loading = 'lazy';
+            // Always set src immediately for fast loading
+            let imgLoaded = false;
+            imgEl.src = imgSrc;
+            // Show image when loaded, hide spinner/placeholder
+            // Timeout: if image doesn't load in 3 seconds, show default
+            let loadTimeout = setTimeout(() => {
+              if (!imgLoaded) {
+                imgEl.src = defaultImage;
+                imgEl.style.display = '';
+                spinner.style.display = 'none';
+                placeholder.style.background = 'none';
+              }
+            }, 3000);
+            imgEl.onload = function() {
+              imgLoaded = true;
+              clearTimeout(loadTimeout);
+              imgEl.style.display = '';
+              spinner.style.display = 'none';
+              placeholder.style.background = 'none';
+            };
             // Advanced fallback: try to reload up to 3 times, then fallback to default
             let reloadAttempts = 0;
             const maxReloads = 3;
             let fallbackTimeout;
-            imgEl.onerror = function() {
+            imgEl.onerror = function(e) {
+              // Log detailed error for debugging
+              console.error('Failed to load image:', imgEl.src, 'for repo:', repo.name, 'Error:', e);
               if (reloadAttempts < maxReloads) {
                 reloadAttempts++;
-                // Try to reload the image after a short delay
                 clearTimeout(fallbackTimeout);
+                // Try to reload with a unique cache buster
                 fallbackTimeout = setTimeout(() => {
-                  imgEl.src = imgSrc + (imgSrc.includes('?') ? '&' : '?') + 'cachebust=' + Date.now();
-                }, 500 * reloadAttempts); // Exponential backoff
+                  imgEl.src = imgSrc.split('?')[0] + '?cachebust=' + Date.now() + '-' + Math.random();
+                }, 500 * reloadAttempts);
               } else {
                 imgEl.onerror = null;
-                imgEl.src = defaultImage;
+                // As a last resort, try to fetch the image as a blob to see if it exists
+                fetch(imgSrc, {cache: 'reload'})
+                  .then(response => {
+                    if (response.ok) {
+                      return response.blob();
+                    } else {
+                      throw new Error('HTTP status ' + response.status);
+                    }
+                  })
+                  .then(blob => {
+                    // If we get a blob, show it as the image
+                    const objectUrl = URL.createObjectURL(blob);
+                    imgEl.src = objectUrl;
+                    imgEl.style.display = '';
+                    spinner.style.display = 'none';
+                    placeholder.style.background = 'none';
+                  })
+                  .catch(fetchErr => {
+                    // If fetch fails, fallback to default
+                    console.error('Final fallback failed for', repo.name, imgSrc, fetchErr);
+                    imgEl.src = defaultImage;
+                    imgEl.style.display = '';
+                    spinner.style.display = 'none';
+                    placeholder.style.background = 'none';
+                  });
               }
             };
-            projectCard.appendChild(imgEl);
+            placeholder.appendChild(imgEl);
+            projectCard.appendChild(placeholder);
             // ...rest of the card...
             const title = document.createElement('h3');
             title.className = 'text-xl font-semibold mb-4 text-white';
